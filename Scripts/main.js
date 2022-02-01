@@ -40,7 +40,7 @@ document
           // console.log("Passwordless same Platform method called");
           const response = await Passwordless.login({ username });
           const token = response.accessToken;
-
+          console.log({token});
           if (response.verified) {
             const payload = { token, nonce, type };
 
@@ -135,7 +135,7 @@ const generateQR = async (username, type, platform = "web", method = "qr") => {
       }
 
       const { transactionId } = remoteResponse;
-      // console.log({ remoteResponse });
+      console.log({ remoteResponse });
       const transactionResponse =
         await Passwordless.getTransactionStatusOnChange(transactionId);
 
@@ -147,6 +147,7 @@ const generateQR = async (username, type, platform = "web", method = "qr") => {
         } else {
           let nonce = document.getElementById("nonce").value;
           let token = transactionResponse.accessToken;
+          console.log({token});
           const payload = { token, nonce };
 
           createHiddenForm(payload, document.getElementById("login-url").value);

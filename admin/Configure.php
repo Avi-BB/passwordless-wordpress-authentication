@@ -15,28 +15,27 @@ foreach ($results as $result) {
 
 
 <?php
-//require_once('../../../../wp-config.php');
 if (isset($_POST['submit'])) {
 
 	$table_name = $wpdb->prefix . 'passwordlessadmin';
 	$data_update = array('base_url' =>sanitize_text_field( $_POST['baseUrl']), 'client_id' => sanitize_text_field($_POST['clientId']));
 	$data_where = array('client_id' => $client);
-	echo $wpdb->update($table_name, $data_update, $data_where);
+	echo sanitize_category(($wpdb))->update($table_name, $data_update, $data_where);
 
 	echo '<script>window.location.reload();</script>';
 }
 
 if (isset($_POST['submit2'])) {
-	//echo '<script>alert("Submitted")</script>';
+
 
 	global $wpdb;
 
 	// Set table name
 	$table = $wpdb->prefix . 'passwordlessadmin';
 
-	//echo $table;
+
 	$charset_collate = $wpdb->get_charset_collate();
-	//echo $charset_collate;
+
 	// Write creating query
 	$query =  "CREATE TABLE IF NOT EXISTS  " . $table . " (
             base_url varchar(255) ,

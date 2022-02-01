@@ -7,10 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $username = $_POST['username'];
-    plauth_login_user($username);
+    passwordless_admin_auth_login_user($username);
 }
 
-function plauth_login_user($username)
+function passwordless_admin_auth_login_user($username)
 {
 
     $user = get_user_by('login', $username);

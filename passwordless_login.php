@@ -101,7 +101,7 @@ class Passwordless_login
 
     public function throw_error($message)
     {
-        echo '<div class="error"><p>' . $message . '</p></div>';
+        echo '<div class="error"><p>' . esc_html_e( $message, "error" ). '</p></div>';
     }
 
     public function do_custom_login()
@@ -126,8 +126,8 @@ class Passwordless_login
 
                 $type = sanitize_text_field($_POST['type']);
                 if ($type == '1') {
-                    $username = isset($_POST['username']) ? $_POST['username'] : '';
-                    $password = isset($_POST['password']) ? $_POST['password'] : '';
+                    $username = sanitize_text_field($_POST['username']);
+                    $password = sanitize_text_field($_POST['password']);
                     $usr =  wp_authenticate($username, $password);
                     if (!is_wp_error($usr)) {
                         wp_clear_auth_cookie();
@@ -148,10 +148,14 @@ class Passwordless_login
                     }
 
 
-                    $accessToken = $_POST['token'];
+                    $accessToken = sanitize_text_field($_POST['token']);
 
-                    $response = file_get_contents('https://api.passwordless.com.au/v1/verifyToken/' . $accessToken);
-                    $response = json_decode($response);
+                    $req = wp_remote_get('https://api.passwordless.com.au/v1/verifyToken/' . $accessToken);
+                    if( is_wp_error( $req ) ) {
+                        return false; 
+                    }
+                    $body = wp_remote_retrieve_body( $req );
+                    $response = json_decode($body);
                     if ($response->verified) {
 
                         $username = $response->email;
@@ -186,7 +190,7 @@ class Passwordless_login
      */
     public function redirect_to_custom_login()
     {
-        $redirect_to = isset($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : null;
+        $redirect_to = sanitize_text_field($_REQUEST['redirect_to']) ? sanitize_text_field($_REQUEST['redirect_to']) : null;
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if (is_user_logged_in()) {
@@ -306,7 +310,7 @@ class Passwordless_login
         // Error messages
         $errors = array();
         if (isset($_REQUEST['login'])) {
-            $error_codes = explode(',', $_REQUEST['login']);
+            $error_codes = explode(',',sanitize_text_field( $_REQUEST['login']));
 
             foreach ($error_codes as $code) {
                 $errors[] = $this->get_error_message($code);
