@@ -6,7 +6,6 @@
 
 function passwordless_enqueue_css_js()
 {
-    wp_enqueue_script('jquery', plugin_dir_url(__FILE__) . 'Scripts/jquery.js', null, null, false);
     wp_enqueue_script('pwl-sdk', plugin_dir_url(__FILE__) . 'Scripts/passwordless-bb.js', null, null, false);
     wp_enqueue_script('detect', plugin_dir_url(__FILE__) . 'Scripts/detect.js', null, null, false);
     wp_enqueue_style('style',  plugin_dir_url(__FILE__) . 'Styles/style.css');
