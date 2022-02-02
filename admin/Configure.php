@@ -44,7 +44,7 @@ if (isset($_POST['submit2'])) {
 	// Execute the query
 	echo '<script>alert("Created")</script>';
 
-	echo $wpdb->query($query);
+	echo sanitize_category($wpdb)->query($query);
 
 	$data = array('base_url' => $base, 'client_id' => $client);
 	$format = array('%s', '%d');
@@ -68,11 +68,11 @@ if (isset($_POST['submit2'])) {
 	<h1>Passwordless Admin Auth Configuration:</h1>
 	<form method="POST">
 		<label>Enter Base Url :- </label> <br>
-		<input type="url" id="baseUrl" name="baseUrl" placeholder="Enter Base Url" value="<?php echo $base ?>" />
+		<input type="url" id="baseUrl" name="baseUrl" placeholder="Enter Base Url" value="<?php echo esc_attr( $base ) ?>" />
 		<br>
 		<br>
 		<label>Enter Client Id :- </label> <br>
-		<input type="text" id="clientId" name="clientId" placeholder="Enter Client Id" value="<?php echo $client ?>" />
+		<input type="text" id="clientId" name="clientId" placeholder="Enter Client Id" value="<?php echo esc_attr( $client ) ?>" />
 		<br>
 		<br>
 		<input type="submit" onclick="handleSubmit()" value="submit" name="submit">

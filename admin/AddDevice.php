@@ -59,7 +59,7 @@ foreach ($results as $result) {
 }
 ?>
 <div style="display:none">
-    <input id="client-id" type="text" value="<?php echo $client ?>"></input>
-    <input id="base-url" type="text" value="<?php echo $base ?>"></input>
+    <input id="client-id" type="text" value="<?php echo esc_attr($client) ?>"></input>
+    <input id="base-url" type="text" value="<?php echo esc_attr( $base ) ?>"></input>
     <input id="redirect-url" value="<?php echo get_site_url() ?>"></input>
 </div>

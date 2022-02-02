@@ -6,7 +6,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-    $username = $_POST['username'];
+    $username = sanitize_text_field($_POST['username']);
     passwordless_admin_auth_login_user($username);
 }
 

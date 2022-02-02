@@ -2,7 +2,7 @@
 Contributors: Passwordless Team
 Tags: username, password, passwords, no, fingerprint,FIDO, WebAuthn, passwordless, auth, web, app, login, push, notification, android, iOS, windows, iPhone, iPad, phone, mobile, smartphone, computer, oauth, sso, authentication, encryption, ssl, secure, security, strong, harden, signup, sign in, login, log in, sign out, lock, unlock, alert,  wp-login, 2 step authentication, two-factor authentication, two step, two factor, 2-Factor, 2fa, two, tfa, mfa, qr, multi-factor, multifactor
 Requires at least: 4.7.0
-Tested up to: 5.8.3
+Tested up to: 5.9
 Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html

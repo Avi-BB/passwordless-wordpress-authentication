@@ -111,12 +111,12 @@ class Passwordless_login
         ) {
 
 
-            if (!isset($_POST['nonce'])) {
+            if (sanitize_text_field(!isset($_POST['nonce']))) {
 
                 die('nonce not set');
             }
 
-            $nonce = $_POST['nonce'];
+            $nonce = sanitize_text_field($_POST['nonce']);
 
 
             if (wp_verify_nonce($nonce, 'passwordless_login_nonce')) {
@@ -142,7 +142,7 @@ class Passwordless_login
 
 
 
-                    if (!isset($_POST['token'])) {
+                    if (sanitize_text_field(!isset($_POST['token']))) {
                         die('Invalid token');
                     }
 
@@ -333,14 +333,14 @@ class Passwordless_login
         // don't specify a redirect, but if a valid redirect URL has been passed as
         // request parameter, use it.
         $attributes['redirect'] = '';
-        if (isset($_REQUEST['redirect_to'])) {
+        if (sanitize_text_field(isset($_REQUEST['redirect_to']))) {
             $attributes['redirect'] = wp_validate_redirect($_REQUEST['redirect_to'], $attributes['redirect']);
         }
 
         // Error messages
         $errors = array();
-        if (isset($_REQUEST['login'])) {
-            $error_codes = explode(',', $_REQUEST['login']);
+        if (sanitize_text_field(isset($_REQUEST['login']))) {
+            $error_codes = explode(',', sanitize_text_field( $_REQUEST['login']));
 
             foreach ($error_codes as $code) {
                 $errors[] = $this->get_error_message($code);
@@ -349,7 +349,7 @@ class Passwordless_login
         $attributes['errors'] = $errors;
 
         // Check if user just logged out
-        $attributes['logged_out'] = isset($_REQUEST['logged_out']) && $_REQUEST['logged_out'] == true;
+        $attributes['logged_out'] = sanitize_text_field(isset($_REQUEST['logged_out'])) && sanitize_text_field($_REQUEST['logged_out']) == true;
 
         // Render the login form using an external template
         return $this->get_template_html('login_form', $attributes);
@@ -470,7 +470,7 @@ class Passwordless_login
     public function process_post()
     {
         if (isset($_POST['username'])) {
-            $username = $_POST['username'];
+            $username = sanitize_text_field($_POST['username']);
 
             $this->login_user($username);
         }

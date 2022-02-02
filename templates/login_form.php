@@ -183,8 +183,8 @@ $results = $wpdb->get_results($sql);
    }
 ?>
 <div style="display:none">
-<input id="client-id" value="<?php echo $client?>"></input>
-<input id="base-url" value="<?php echo $base?>"></input>
+<input id="client-id" value="<?php echo esc_attr( $client )?>"></input>
+<input id="base-url" value="<?php echo esc_attr( $base )?>"></input>
 <input id="login-url" value="<?php echo wp_login_url(); ?>">
 <input id="redirect-url" value="<?php echo get_site_url()?>"></input>
 </div>
