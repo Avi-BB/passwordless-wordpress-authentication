@@ -4,8 +4,9 @@
 <?php
 
 global $wpdb, $base, $client;
-$sql = "SELECT * FROM wp_passwordlessadmin";
 
+$sql = "SELECT * FROM wp_passwordlessadmin";
+echo "<script>console.log('".$sql."')</script>";
 $results = $wpdb->get_results($sql);
 foreach ($results as $result) {
 	$base = $result->base_url;
@@ -17,12 +18,30 @@ foreach ($results as $result) {
 <?php
 if (isset($_POST['submit'])) {
 
+	// Set table name
+	$table = $wpdb->prefix . 'passwordlessadmin';
+
+
+	$charset_collate = $wpdb->get_charset_collate();
+	$query1 = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) );
+	if ( $wpdb->get_var( $query1 ) !== $table) {
+	// Write creating query
+	$query =  "CREATE TABLE IF NOT EXISTS  " . $table . " (
+            base_url varchar(255) ,
+            client_id VARCHAR(255)
+            );";
+	// Execute the query
+	echo '<script>alert("Table Created")</script>';
+	echo sanitize_category($wpdb)->query($query);
+	// $my_id = $wpdb->insert_id;
+	echo '<script>window.location.reload();</script>';
+		}else{
 	$table_name = $wpdb->prefix . 'passwordlessadmin';
 	$data_update = array('base_url' =>sanitize_text_field( $_POST['baseUrl']), 'client_id' => sanitize_text_field($_POST['clientId']));
 	$data_where = array('client_id' => $client);
 	echo sanitize_category(($wpdb))->update($table_name, $data_update, $data_where);
-
 	echo '<script>window.location.reload();</script>';
+		}
 }
 
 if (isset($_POST['submit2'])) {
@@ -35,14 +54,15 @@ if (isset($_POST['submit2'])) {
 
 
 	$charset_collate = $wpdb->get_charset_collate();
-
+	$query1 = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) );
+	if ( $wpdb->get_var( $query1 ) !== $table) {
 	// Write creating query
 	$query =  "CREATE TABLE IF NOT EXISTS  " . $table . " (
             base_url varchar(255) ,
             client_id VARCHAR(255)
             );";
 	// Execute the query
-	echo '<script>alert("Created")</script>';
+	// echo '<script>alert("Created")</script>';
 
 	echo sanitize_category($wpdb)->query($query);
 
@@ -51,17 +71,27 @@ if (isset($_POST['submit2'])) {
 	$wpdb->insert($table, $data, $format);
 	$my_id = $wpdb->insert_id;
 	echo '<script>window.location.reload();</script>';
+		}else{
+			echo '<script>alert("Already Created")</script>';
+		}
 }
 ?>
 
 
 
-<form method="POST" id="check-table">
-	<p>Click the following button to create required tables in database</p>
+<?php
+
+if($results == "" || $results == null){
+	?>
+	<form method="POST" id="check-table">
+	<h3 style="color: red;">Click the following button to create required tables in database</h3>
 	<strong>Note:- Need To create table for first time only....</strong>
 	<input type="submit" name="submit2" value="Create">
-
 </form>
+<?php
+}
+
+?>
 
 
 <div class="wrap">

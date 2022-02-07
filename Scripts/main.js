@@ -3,7 +3,6 @@ Passwordless.init(
   document.getElementById("client-id")?.value
 );
 
-
 const getAppDetails = async () => {
   const logoImage = document.getElementById("appLogo");
   try {
@@ -207,6 +206,7 @@ document.getElementById("addDevice")?.addEventListener("submit", async (e) => {
   }
 });
 
+
 document
   .getElementById("approveButton")
   ?.addEventListener("click", async (e) => {
@@ -238,3 +238,35 @@ const decline = async (id) => {
     alert(error.message);
   }
 };
+
+
+// other team members add device
+
+document.getElementById("addTeam")?.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  // console.log({ clientId: document.getElementById("client-id").value });
+
+  const username = document.getElementById("pwl-username").innerText;
+  const authMethod = document.getElementById("authMethod").value;
+  // console.log({ username, authMethod });
+
+  if (authMethod == "1") {
+    try {
+      // console.log("Passwordless same Platform method called");
+      const response = await Passwordless.register({ username });
+
+      alert("Registration Successful");
+
+      // console.log(response.data);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  if (authMethod == "2") {
+    generateQR(username, 1, "web");
+  } else if (authMethod == "3") {
+    generateQR(username, 1, "app");
+  }
+});

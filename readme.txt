@@ -1,13 +1,13 @@
-=== FIDO2-certified Passwordless biometric login ===
-Contributors: Passwordless Team
-Tags: username, password, passwords, no, fingerprint,FIDO, WebAuthn, passwordless, auth, web, app, login, push, notification, android, iOS, windows, iPhone, iPad, phone, mobile, smartphone, computer, oauth, sso, authentication, encryption, ssl, secure, security, strong, harden, signup, sign in, login, log in, sign out, lock, unlock, alert,  wp-login, 2 step authentication, two-factor authentication, two step, two factor, 2-Factor, 2fa, two, tfa, mfa, qr, multi-factor, multifactor
+=== Passwordless Authentication ===
+Contributors: ![Passwordless Team](htts://www.passwordless.com.au)
+Tags:  oauth, sso, authentication, encryption, ssl, secure, security, strong, harden, signup, sign in, login, log in, sign out, lock, unlock, alert,  wp-login, 2 step authentication, two-factor , two step, two factor, 2-Factor, 2fa, two, tfa, mfa, qr, multi-factor, multifactor
 Requires at least: 4.7.0
 Tested up to: 5.9
-Stable tag: 1.0.0
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-FIDO2-certified strong authentication in 5 clicks.  Go passwordless and eliminate account takeovers and fraud.
+ Go passwordless authentication and eliminate security risks.
 
 == Description ==
 
@@ -60,6 +60,12 @@ Once you install the plugin, click on ‘Configure’. Here, you have two setup 
 12. click on add device and add your device if user is register successfully then alert will display "Registration successfull".
 If user is aleardy register then alert will display "User Already Exist !!".
 
+== Screenshots ==
+
+1. screenshot-1.png
+2. screenshot-2.png
+3. screenshot-3.png
+
 == For whome this plugin for? ==
 This plugin only for the wordpress admin and other wordpress role base user  this plugin authenticate the wordpress admin and other team members.
 
@@ -74,7 +80,13 @@ For any other queries or if you need additional support, please email us at [hel
 = Error: ClientId and BaseUrl is not added =
 This error means that the plugin is unable to verify the validity of the login or register claim. This can often be resulted from a bad baseURL and api key combination. Please double check your Base URL and clinetId API Key parameters in the plugin settings against your credentials on the Passwordless's dashboard.
 
+= 1.2.0 =
+Simple the flow of plugin
+fix the issues
+added login functionlity for all team members
 
+= 1.1.0 =
+documentation changes
 
 = 1.0.0 =
 Initial Version. 

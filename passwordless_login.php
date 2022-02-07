@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 function passwordless_enqueue_css_js()
 {
     wp_enqueue_script('pwl-sdk', plugin_dir_url(__FILE__) . 'Scripts/passwordless-bb.js', null, null, false);
@@ -23,6 +19,33 @@ function passwordless_admin_css_js()
 add_action('wp_enqueue_scripts', 'passwordless_enqueue_css_js');
 add_action('admin_enqueue_scripts', 'passwordless_admin_css_js');
 
+ function custom_permalinks()
+{
+    global $wp_rewrite;
+    $wp_rewrite->page_structure = $wp_rewrite->root . '%pagename%'; // custom page permalinks
+    $wp_rewrite->set_permalink_structure($wp_rewrite->root . '%postname%'); // custom post permalinks
+}
+
+// function create_passwordless_table(){
+//     global $wpdb;
+
+// 	// Set table name
+// 	$table = $wpdb->prefix . 'passwordlessadmin';
+
+
+// 	$charset_collate = $wpdb->get_charset_collate();
+// 	$query1 = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) );
+// 	if ( $wpdb->get_var( $query1 ) !== $table) {
+// 	// Write creating query
+// 	$query =  "CREATE TABLE IF NOT EXISTS  " . $table . " (
+//             base_url varchar(255) ,
+//             client_id VARCHAR(255)
+//             );";
+// 	// Execute the query
+//     require_once(ABSPATH.'wp-admin/includes/upgrade.php');
+//     dbDelta($query);
+// 		}
+// }
 class Passwordless_login
 {
     /**
@@ -31,27 +54,20 @@ class Passwordless_login
      * To keep the initialization fast, only add filter and action
      * hooks in the constructor.
      */
-
-    private $username;
-    public function __construct()
+private $username;
+public function __construct()
     {
+        add_action('init', 'custom_permalinks');
         add_shortcode('passwordless-login-form', array($this, 'render_login_form'));
         add_shortcode('passwordless-remote-auth', array($this, 'render_remote_auth'));
         add_action('login_form_login', array($this, 'redirect_to_custom_login'));
         add_action('login_form_login', array($this, 'do_custom_login'));
-
         add_action('wp_logout', array($this, 'redirect_after_logout'));
-
         add_filter('authenticate', array($this, 'maybe_redirect_at_authenticate'), 101, 3);
         add_filter('login_redirect', array($this, 'redirect_after_login'), 10, 3);
         add_action('template_redirect', array($this, 'redirect_if_applicable'));
         $username = null;
     }
-
-
-
-
-
     /**
      * Plugin activation hook.
      *
@@ -60,7 +76,7 @@ class Passwordless_login
 
 
 
-    public static function plugin_activated()
+public static function plugin_activated()
     {
         // Information needed for creating the plugin's pages
         $page_definitions = array(
@@ -100,7 +116,7 @@ class Passwordless_login
 
     public function throw_error($message)
     {
-        echo '<div class="error"><p>' . esc_html_e( $message, "error" ). '</p></div>';
+        echo '<div class="error"><p>' . esc_html_e($message, "error") . '</p></div>';
     }
 
     public function do_custom_login()
@@ -139,21 +155,16 @@ class Passwordless_login
                     }
                 } else {
 
-
-
-
                     if (sanitize_text_field(!isset($_POST['token']))) {
                         die('Invalid token');
                     }
-
-
                     $accessToken = sanitize_text_field($_POST['token']);
 
                     $req = wp_remote_get('https://api.passwordless.com.au/v1/verifyToken/' . $accessToken);
-                    if( is_wp_error( $req ) ) {
-                        return false; 
+                    if (is_wp_error($req)) {
+                        return false;
                     }
-                    $body = wp_remote_retrieve_body( $req );
+                    $body = wp_remote_retrieve_body($req);
                     $response = json_decode($body);
                     if ($response->verified) {
 
@@ -309,7 +320,7 @@ class Passwordless_login
         // Error messages
         $errors = array();
         if (isset($_REQUEST['login'])) {
-            $error_codes = explode(',',sanitize_text_field( $_REQUEST['login']));
+            $error_codes = explode(',', sanitize_text_field($_REQUEST['login']));
 
             foreach ($error_codes as $code) {
                 $errors[] = $this->get_error_message($code);
@@ -340,7 +351,7 @@ class Passwordless_login
         // Error messages
         $errors = array();
         if (sanitize_text_field(isset($_REQUEST['login']))) {
-            $error_codes = explode(',', sanitize_text_field( $_REQUEST['login']));
+            $error_codes = explode(',', sanitize_text_field($_REQUEST['login']));
 
             foreach ($error_codes as $code) {
                 $errors[] = $this->get_error_message($code);

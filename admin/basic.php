@@ -9,7 +9,7 @@ function passwordless_admin_auth_menu()
         'pwl-auth',
         'passwordless_admin_auth_doc',
         '',
-        6
+       5
     );
     add_submenu_page(
         'pwl-auth',
@@ -51,4 +51,13 @@ function passwordless_admin_auth_device()
     require(__DIR__ . '/AddDevice.php');
 }
 
+// function edit_profile()
+// {
+
+//     require(__DIR__ . '/AddDevice.php');
+// }
 add_action('admin_menu', 'passwordless_admin_auth_menu');
+
+// add_action( 'edit_user_profile', 'edit_profile' );
+// This will show below the color scheme and above username field
+     
