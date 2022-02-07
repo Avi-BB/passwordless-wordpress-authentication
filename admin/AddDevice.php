@@ -1,16 +1,39 @@
+<style>
+    #submit-btn {
+        background-color: #00a0d2;
+        color: white;
+        border: none;
+        border-radius: 0.2rem;
+        padding: 0.3rem 0.7rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    #addUserDevice {
+
+        background-color: #00a0d2;
+        color: white;
+        border: none;
+        border-radius: 0.2rem;
+        padding: 0.3rem 0.7rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+</style>
+
 <?php global $current_user;
 wp_get_current_user(); ?>
 <div class="card">
     <div class="card-body" style="text-align:center">
 
 
-        <h5 class="card-title">Welcome
+        <h3 class="card-title">Welcome
 
             <span id="pwl-username"><?php echo esc_html($current_user->user_login); ?></span>
-        </h5>
+        </h3>
 
 
-        <h4>Add Device</h4>
+        <h4>Register yourself</h4>
 
         <div>
             <form id="addDevice" name="addDevice">
@@ -18,7 +41,7 @@ wp_get_current_user(); ?>
                     <select class="dropdownOption" id="authMethod" name="authMethod" aria-label="Default select example">
                         <option selected>Select Options For Registration</option>
                         <option value="1">Same Platform</option>
-                        <option value="2">Appless QR</option> 
+                        <option value="2">Appless QR</option>
                         <option value="3">InApp QR</option>
 
                     </select>
@@ -26,12 +49,15 @@ wp_get_current_user(); ?>
 
 
                 <div style="text-align:center">
-                    <input value="Register" type="submit">
+                    <input id="submit-btn" value="Register" type="submit">
+
                 </div>
 
             </form>
+            <div id="addTeamMemberDevice" style="text-align:center">
+                <button id="submit-btn">Add Device</button>
+            </div>
         </div>
-
         <div id="viewQR" style="margin-top:20px;display:none">
 
             <div style="margin:10px">
@@ -60,6 +86,6 @@ foreach ($results as $result) {
 ?>
 <div style="display:none">
     <input id="client-id" type="text" value="<?php echo esc_attr($client) ?>"></input>
-    <input id="base-url" type="text" value="<?php echo esc_attr( $base ) ?>"></input>
+    <input id="base-url" type="text" value="<?php echo esc_attr($base) ?>"></input>
     <input id="redirect-url" value="<?php echo get_site_url() ?>"></input>
 </div>

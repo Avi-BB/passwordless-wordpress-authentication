@@ -1,3 +1,16 @@
+<style>
+
+#submit-btn{
+		background-color: #00a0d2;
+		color: white;
+		border: none;
+		border-radius: 0.2rem;
+		padding: 0.3rem 0.7rem;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+</style>
+
 <?php
 
 function custom_user_profile_fields( $profileuser ) {
@@ -43,9 +56,12 @@ wp_get_current_user(); ?>
 
 
                 <div id="addTeam" style="text-align:center">
-                    <button >Register</button>
+                    <button id="submit-btn" >Register</button>
                 </div>
-
+                <br/>
+                <div id="addTeamMemberDevice" style="text-align:center">
+                <button id="submit-btn">Add Device</button>
+            </div>
             </div>
         </div>
         <div style="display:none">

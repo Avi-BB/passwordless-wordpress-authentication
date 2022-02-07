@@ -17,6 +17,14 @@ const getAppDetails = async () => {
 };
 getAppDetails();
 
+
+
+
+
+
+
+
+
 document
   .getElementById("contactForm")
   ?.addEventListener("submit", async function (e) {
@@ -127,7 +135,10 @@ const generateQR = async (username, type, platform = "web", method = "qr") => {
 
         if (type == 1) {
           document.getElementById("viewQR").style.display = "block";
-        } else {
+        } else if(type===3){
+          document.getElementById("viewQR").style.display = "block";
+        }
+        else {
           document.querySelector(".modal").classList.add("show");
           document.querySelector(".modal").style.display = "block";
         }
@@ -143,7 +154,13 @@ const generateQR = async (username, type, platform = "web", method = "qr") => {
           document.getElementById("viewQR").style.display = "none";
           document.getElementById("qrImg").src = "#";
           alert("Registration Succssful");
-        } else {
+        }else if (type == 3) {
+          document.getElementById("viewQR").style.display = "none";
+          document.getElementById("qrImg").src = "#";
+          alert("Device Added Successfully");
+        } 
+        
+        else {
           let nonce = document.getElementById("nonce").value;
           let token = transactionResponse.accessToken;
           console.log({token});
@@ -219,7 +236,16 @@ document
         if (response.verified) {
           alert("Success");
         }
-      } else {
+      }
+      else if (type == 3) {
+        const response = await Passwordless.addDevice({ username, id });
+        // console.log(response);
+        if (response.verified) {
+          alert("Device Added Successfully");
+        }
+        window.close();
+      }
+      else {
         const response = await Passwordless.login({ username, id });
         // console.log(response);
         if (response.verified) {
@@ -238,6 +264,42 @@ const decline = async (id) => {
     alert(error.message);
   }
 };
+
+
+// other team members add device
+
+document.getElementById("addTeamMemberDevice")?.addEventListener("click", async (e) => {
+
+
+  // console.log({ clientId: document.getElementById("client-id").value });
+
+  const username = document.getElementById("pwl-username").innerText;
+  const authMethod = document.getElementById("authMethod").value;
+  console.log({ username, authMethod });
+// console.log("add team member device listner");
+  if (authMethod == "1") {
+    try {
+      // console.log("Passwordless same Platform method called");
+      const response = await Passwordless.addDevice({ username });
+
+      if(response.status == "SUCCESS"){
+        alert("Device added successfully");
+      }else{
+        alert("Register first!");
+      }
+
+      // console.log(response.data);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  if (authMethod == "2") {
+    generateQR(username, 3, "web");
+  } else if (authMethod == "3") {
+    generateQR(username, 3, "app");
+  }
+});
 
 
 // other team members add device
@@ -270,3 +332,6 @@ document.getElementById("addTeam")?.addEventListener("click", async (e) => {
     generateQR(username, 1, "app");
   }
 });
+
+
+
