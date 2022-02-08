@@ -19,33 +19,38 @@ function passwordless_admin_css_js()
 add_action('wp_enqueue_scripts', 'passwordless_enqueue_css_js');
 add_action('admin_enqueue_scripts', 'passwordless_admin_css_js');
 
- function custom_permalinks()
+function custom_permalinks()
 {
     global $wp_rewrite;
     $wp_rewrite->page_structure = $wp_rewrite->root . '%pagename%'; // custom page permalinks
     $wp_rewrite->set_permalink_structure($wp_rewrite->root . '%postname%'); // custom post permalinks
 }
 
-// function create_passwordless_table(){
-//     global $wpdb;
+function insert_pl_team_table()
+{
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'passwordlessadmin';
+    $wpdb_collate = $wpdb->collate;
+    $sql =
+        "CREATE TABLE {$table_name} (
+        base_url varchar(255) NULL,
+        client_id varchar(255) NULL,
+        KEY base_url (base_url),
+        KEY client_id (client_id)
+        )
+        COLLATE {$wpdb_collate}";
 
-// 	// Set table name
-// 	$table = $wpdb->prefix . 'passwordlessadmin';
-
-
-// 	$charset_collate = $wpdb->get_charset_collate();
-// 	$query1 = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table ) );
-// 	if ( $wpdb->get_var( $query1 ) !== $table) {
-// 	// Write creating query
-// 	$query =  "CREATE TABLE IF NOT EXISTS  " . $table . " (
-//             base_url varchar(255) ,
-//             client_id VARCHAR(255)
-//             );";
-// 	// Execute the query
-//     require_once(ABSPATH.'wp-admin/includes/upgrade.php');
-//     dbDelta($query);
-// 		}
-// }
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+}
+function add_base_pl_team_data()
+{
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'passwordlessadmin';
+    $data = array('base_url' => 'No Data', 'client_id' => 'no data');
+    $format = array('%s',  '%s');
+    $wpdb->insert($table_name, $data, $format);
+}
 class Passwordless_login
 {
     /**
@@ -54,10 +59,11 @@ class Passwordless_login
      * To keep the initialization fast, only add filter and action
      * hooks in the constructor.
      */
-private $username;
-public function __construct()
+    private $username;
+    public function __construct()
     {
         add_action('init', 'custom_permalinks');
+        add_action('init', 'insert_pl_team_table');
         add_shortcode('passwordless-login-form', array($this, 'render_login_form'));
         add_shortcode('passwordless-remote-auth', array($this, 'render_remote_auth'));
         add_action('login_form_login', array($this, 'redirect_to_custom_login'));
@@ -66,7 +72,8 @@ public function __construct()
         add_filter('authenticate', array($this, 'maybe_redirect_at_authenticate'), 101, 3);
         add_filter('login_redirect', array($this, 'redirect_after_login'), 10, 3);
         add_action('template_redirect', array($this, 'redirect_if_applicable'));
-        $username = null;
+        add_shortcode('init', 'add_base_pl_team_data');
+       
     }
     /**
      * Plugin activation hook.
@@ -76,7 +83,7 @@ public function __construct()
 
 
 
-public static function plugin_activated()
+    public static function plugin_activated()
     {
         // Information needed for creating the plugin's pages
         $page_definitions = array(
