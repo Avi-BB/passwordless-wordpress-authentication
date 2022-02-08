@@ -3,7 +3,7 @@ Contributors: ![Passwordless Team](htts://www.passwordless.com.au)
 Tags:  oauth, sso, authentication, encryption, ssl, secure, security, strong, harden, signup, sign in, login, log in, sign out, lock, unlock, alert,  wp-login, 2 step authentication, two-factor , two step, two factor, 2-Factor, 2fa, two, tfa, mfa, qr, multi-factor, multifactor
 Requires at least: 4.7.0
 Tested up to: 5.9
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,6 +80,9 @@ Please email us at [help@passwordless.com.au](help@passwordless.com.au)
 For any other queries or if you need additional support, please email us at [help@passwordless.com.au](help@passwordless.com.au) 
 = Error: ClientId and BaseUrl is not added =
 This error means that the plugin is unable to verify the validity of the login or register claim. This can often be resulted from a bad baseURL and api key combination. Please double check your Base URL and clinetId API Key parameters in the plugin settings against your credentials on the Passwordless's dashboard.
+
+= 1.2.2 =
+remove create table functon: no need anymore
 
 = 1.2.1 =
 Multiple device support added.
