@@ -44,7 +44,7 @@
 
 	}
 
-	#submit-btn {
+	.submit-btn {
 		background-color: #00a0d2;
 		color: white;
 		border: none;
@@ -127,7 +127,7 @@ if (isset($_POST['submit'])) {
 			<input type="password" id="clientId" name="clientId" placeholder="Enter Client Id" value="<?php echo esc_attr($client) ?>" />
 
 		</div>
-		<input id="submit-btn" type="submit" onclick="handleSubmit()" value="submit" name="submit">
+		<input class="submit-btn" type="submit" onclick="handleSubmit()" value="submit" name="submit">
 	</form>
 </div>
 <!-- <div style="margin-top: 1rem;">

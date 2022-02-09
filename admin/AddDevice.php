@@ -1,16 +1,5 @@
 <style>
-    #submit-btn {
-        background-color: #00a0d2;
-        color: white;
-        border: none;
-        border-radius: 0.2rem;
-        padding: 0.3rem 0.7rem;
-        font-size: 1rem;
-        cursor: pointer;
-    }
-
-    #addUserDevice {
-
+    .submit-btn {
         background-color: #00a0d2;
         color: white;
         border: none;
@@ -49,13 +38,13 @@ wp_get_current_user(); ?>
 
 
                 <div style="text-align:center">
-                    <input id="submit-btn" value="Register" type="submit">
+                    <input class="submit-btn" value="Register" type="submit">
 
                 </div>
 
             </form>
             <div id="addTeamMemberDevice" style="text-align:center">
-                <button id="submit-btn">Add Device</button>
+                <button class="submit-btn">Add Device</button>
             </div>
         </div>
         <div id="viewQR" style="margin-top:20px;display:none">

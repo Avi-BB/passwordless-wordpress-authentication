@@ -1,6 +1,6 @@
 <style>
 
-#submit-btn{
+.submit-btn{
 		background-color: #00a0d2;
 		color: white;
 		border: none;
@@ -34,7 +34,7 @@ wp_get_current_user(); ?>
     <div class="card-body" style="text-align:center">
 
 
-        <h3 class="card-title">Welcome
+        <h3 class="card-title">Welcome11
 
             <strong id="pwl-username"><?php echo esc_html($current_user->user_login); ?></strong>
         </h3>
@@ -56,11 +56,11 @@ wp_get_current_user(); ?>
 
 
                 <div id="addTeam" style="text-align:center">
-                    <button id="submit-btn" >Register</button>
+                    <button class="submit-btn" >Register</button>
                 </div>
                 <br/>
                 <div id="addTeamMemberDevice" style="text-align:center">
-                <button id="submit-btn">Add Device</button>
+                <button class="submit-btn">Add Device</button>
             </div>
             </div>
         </div>
