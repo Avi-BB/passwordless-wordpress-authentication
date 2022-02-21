@@ -15,7 +15,7 @@
         <div class="col-md-7 col-sm-12">
             <div class="card">
             <div style="margin:0 auto; text-align: center;">
-                <img id="appLogo" width=50  style="object-fit:cover; height: 50px; margin-top: 1rem"/>
+                <img id="appLogo" width=50  style="object-fit:cover; height: 50px; margin-top: 1rem; border-radius: 50%;"/>
             </div>
                 <div class="card-body">
                     <h4 class="text-center card-title">Passwordless Login</h4>

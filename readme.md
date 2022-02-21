@@ -45,7 +45,7 @@ This plugin is compatible with WordPress' default password login, so this should
 
 As this is a wordpress plugin this project requires wordpress to run.
 
-(OPTIONAL) If you wish to modify the Javascript source files and/or PHP dependancies within this project, then you would also need to nave Node, NPM, and Composer installed.
+(OPTIONAL) If you wish to modify the Javascript source files and/or PHP dependencies within this project, then you would also need to nave Node, NPM, and Composer installed.
 
 ### WordPress Setup Guide
 
@@ -54,7 +54,7 @@ As this is a wordpress plugin this project requires wordpress to run.
 
    ![Settings](img/settings.png)
 
-3. Visit [Passwordless Dashboard](https://home.passwordless.com.au/) click on the "Add Application" button to create application, select Web/Wordpress app and fill the form.
+3. Visit [Passwordless Dashboard](https://home.passwordless4u.com/) click on the "Add Application" button to create application, select Web/Wordpress app and fill the form.
 you'll get the following view when you click on "Save and Next".
 
 Copy from the Passwordless dashboard
@@ -62,7 +62,7 @@ Copy from the Passwordless dashboard
 ![Passwordless Wordpress ClientId](img/passwordless-wordpress-app.png)
 ![Passwordless Wordpress BaseURL](img/passwordless-wordpress-app1.png)
 
-and paste the ClientId and BaseURL into the plugin configue page and save it.
+and paste the ClientId and BaseURL into the plugin configure page and save it.
 
 ![Plugin Dashboard](img/plugin-dashboard.png)
 
@@ -71,7 +71,7 @@ Click on "Add Device" button and select the authentication method you wish to us
 ![Add Device](img/add-device.png)
 
 
-5. Two Pages will be auto generated when you install the plugin one is "Passwordless Sign In" page and "Authenticate Token". If "Passwordless Sign In" page slugin is not set then it will be named "member-login" and for "Authenitcate Token" page is "authenticate" slug.
+5. Two Pages will be auto generated when you install the plugin one is "Passwordless Sign In" page and "Authenticate Token". If "Passwordless Sign In" page slug is not set then it will be named "member-login" and for "Authenticate Token" page is "authenticate" slug.
 example:
 for "Passwordless Sign In" page slug:
 https://your-domain.com/member-login
@@ -89,7 +89,7 @@ Distributed under the GPLv3 License. See `LICENSE` for more information.
 
 ## Contact
 
-Passwordless - help@passwordless.com.au
+Passwordless - help@passwordless4u.com
 
 If you need plugin help feel free to contact avi@mollatech.com (usually reply within 48 hours).
 

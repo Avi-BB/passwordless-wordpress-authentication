@@ -2,8 +2,8 @@
 <style>
 	.wrap {
 		background-color: white;
-		width: fit-content;
-		padding: 2rem;
+		width: 40%;
+		padding: 1rem;
 		box-shadow: 0 0 5px #ccc;
 		border-radius: 0.2rem;
 
@@ -11,8 +11,8 @@
 
 	.wrap-cnd {
 		background-color: white;
-		width: fit-content;
-		padding: 0.3rem 1rem;
+		width: 40%;
+		padding: 1rem;
 		box-shadow: 0 0 5px #ccc;
 		border-radius: 0.2rem;
 		margin-top: 1rem;
@@ -60,7 +60,6 @@
 global $wpdb, $base, $client;
 
 $sql = "SELECT * FROM wp_passwordlessadmin";
-echo "<script>console.log('" . $sql . "')</script>";
 $results = $wpdb->get_results($sql);
 foreach ($results as $result) {
 	$base = $result->base_url;
@@ -107,29 +106,34 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-
-
-<div class="wrap-cnd">
-	<h3>Get your passwordless credentials</h3>
-	<p>Visit: <a href="https://www.passwordless.com.au" alt="passwordless" target="_blank" noreffer>passwordless.com.au</a></p>
-</div>
-
 <div class="wrap">
-	<h1 style="margin-bottom: 1rem;">Passwordless Configuration:</h1>
+	<h3 style="margin-bottom: 1rem; font-weight:bold; text-align:justify;">Passwordless Configuration:</h3>
 	<form class="form-container" method="POST" autocomplete="false">
 		<div class="text-field-container">
 			<label>Enter Base Url </label>
-			<input type="url" id="baseUrl" name="baseUrl" placeholder="Enter Base Url" value="<?php echo esc_attr($base) ?>" />
+			<input type="url" style="width: 12rem;" id="baseUrl" name="baseUrl" placeholder="Enter Base Url" value="<?php echo esc_attr($base) ?>" />
 
 		</div>
 		<div class="text-field-container">
 			<label>Enter Client Id </label>
-			<input type="password" id="clientId" name="clientId" placeholder="Enter Client Id" value="<?php echo esc_attr($client) ?>" />
-
+			<input type="text" style="width: 12rem;" id="clientId" name="clientId" placeholder="Enter Client Id" value="<?php echo esc_attr($client) ?>" />
 		</div>
 		<input class="submit-btn" type="submit" onclick="handleSubmit()" value="submit" name="submit">
 	</form>
 </div>
+
+<div class="wrap-cnd">
+	<h3>Get your Passwordless credentials</h3>
+	<p>Visit: <a href="https://home.passwordless4u.com" alt="passwordless" target="_blank" noreferrer>home.passwordless4u.com</a></p>
+</div>
+
+<div class="wrap-cnd">
+	<h3 style="margin-bottom: 0; padding-bottom:0;">Documentation</h3>
+	<p>Detail Integration of Passwordless's WordPress account authentication plugin</p>
+	<p>Visit: <a href="https://docs.passwordless4u.com/getting-started/wordpress" alt="passwordless" target="_blank" noreferrer>docs.passwordless4u.com</a></p>
+</div>
+
+
 <!-- <div style="margin-top: 1rem;">
 <h2>Intgration Guide: </h2>
 	<iframe width="500" height="345" src="https://www.youtube.com/watch?v=QXbrdVjWaME">

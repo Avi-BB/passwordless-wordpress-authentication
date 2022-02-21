@@ -8,6 +8,8 @@ function passwordless_enqueue_css_js()
     wp_enqueue_style('bootstrap',  plugin_dir_url(__FILE__) . 'Styles/bootstrap.min.css');
     wp_enqueue_script('bootstrapjs', plugin_dir_url(__FILE__) . 'Scripts/bootstrap.min.js');
     wp_enqueue_script('mainjs', plugin_dir_url(__FILE__) . 'Scripts/main.js', null, null, true);
+    wp_enqueue_script('assetlinks', plugin_dir_url(__FILE__) . 'Scripts/assetlinks.json', null, null, false);
+
 }
 
 function passwordless_admin_css_js()
@@ -15,9 +17,13 @@ function passwordless_admin_css_js()
     wp_enqueue_script('pwl-sdk', plugin_dir_url(__FILE__) . 'Scripts/passwordless-bb.js', null, null, false);
     wp_enqueue_script('mainjs', plugin_dir_url(__FILE__) . 'Scripts/main.js', null, null, true);
     wp_enqueue_script('detect', plugin_dir_url(__FILE__) . 'Scripts/detect.js', null, null, false);
+    wp_enqueue_script('assetlinks', plugin_dir_url(__FILE__) . 'Scripts/assetlinks.json', null, null, false);
+
 }
 add_action('wp_enqueue_scripts', 'passwordless_enqueue_css_js');
 add_action('admin_enqueue_scripts', 'passwordless_admin_css_js');
+
+
 
 function custom_permalinks()
 {
@@ -43,6 +49,7 @@ function insert_pl_team_table()
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
 }
+
 function add_base_pl_team_data()
 {
     global $wpdb;
@@ -51,6 +58,14 @@ function add_base_pl_team_data()
     $format = array('%s',  '%s');
     $wpdb->insert($table_name, $data, $format);
 }
+
+
+
+
+
+
+
+
 class Passwordless_login
 {
     /**
@@ -73,8 +88,24 @@ class Passwordless_login
         add_filter('login_redirect', array($this, 'redirect_after_login'), 10, 3);
         add_action('template_redirect', array($this, 'redirect_if_applicable'));
         add_shortcode('init', 'add_base_pl_team_data');
-       
+        // add_action( 'rest_api_init', function () {
+        //     register_rest_route( '.well-known', '/assetlinks', array(
+        //         'methods' => 'GET',
+        //         'callback' => function(){
+        //             return file_get_contents(plugin_dir_url(__FILE__) . '/assetlink.json');
+        //         },
+        //     ) );
+        // } );
+
+   
     }
+
+// Assetlink generate
+
+
+// end
+
+
     /**
      * Plugin activation hook.
      *
@@ -85,6 +116,7 @@ class Passwordless_login
 
     public static function plugin_activated()
     {
+      
         // Information needed for creating the plugin's pages
         $page_definitions = array(
             'member-login' => array(
@@ -95,9 +127,6 @@ class Passwordless_login
                 'title' => __('Authenticate Token', 'personalize-login'),
                 'content' => '[passwordless-remote-auth]'
             ),
-
-
-
         );
 
         foreach ($page_definitions as $slug => $page) {
@@ -167,7 +196,7 @@ class Passwordless_login
                     }
                     $accessToken = sanitize_text_field($_POST['token']);
 
-                    $req = wp_remote_get('https://api.passwordless.com.au/v1/verifyToken/' . $accessToken);
+                    $req = wp_remote_get('https://api.passwordless4u.com/v1/verifyToken/' . $accessToken);
                     if (is_wp_error($req)) {
                         return false;
                     }

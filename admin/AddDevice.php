@@ -1,3 +1,7 @@
+
+
+<?php global $current_user;
+wp_get_current_user(); ?>
 <style>
     .submit-btn {
         background-color: #00a0d2;
@@ -9,9 +13,6 @@
         cursor: pointer;
     }
 </style>
-
-<?php global $current_user;
-wp_get_current_user(); ?>
 <div class="card">
     <div class="card-body" style="text-align:center">
 
@@ -20,8 +21,6 @@ wp_get_current_user(); ?>
 
             <span id="pwl-username"><?php echo esc_html($current_user->user_login); ?></span>
         </h3>
-
-
         <h4>Register yourself</h4>
 
         <div>
@@ -59,7 +58,18 @@ wp_get_current_user(); ?>
             <img src="" alt="" width="200px" height="200px" id="qrImg">
         </div>
     </div>
+  <div>
+  <div style="text-align:center;">
+        <div>
+            <h3>Download Passwordless App</h3>
+        </div>
+    <div>
+        <a href="https://play.google.com/store/apps/details?id=com.bluebricks.passwordless" target="_blank" rel="noreferrer"><button style="background-color:#b516b58a; border:none;; padding: 0.2rem; color:#fff; cursor:pointer; border-radius: 0.2rem;">Download Android App</button></a>
+       <a href="https://apps.apple.com/us/app/passwordlessapp/id1587344101" target="_blank" rel="noreferrer" > <button style="background-color:#fb891ac4; border:none;; padding: 0.2rem; color:#fff; cursor:pointer;  border-radius: 0.2rem;">Download IOS App</button></a>
+    </div>
+  </div>
 
+    </div>
 </div>
 
 <?php

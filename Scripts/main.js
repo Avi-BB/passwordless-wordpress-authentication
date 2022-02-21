@@ -282,7 +282,7 @@ document.getElementById("addTeamMemberDevice")?.addEventListener("click", async 
       // console.log("Passwordless same Platform method called");
       const response = await Passwordless.addDevice({ username });
 
-      if(response.status == "SUCCESS"){
+      if(response.verified == true){
         alert("Device added successfully");
       }else{
         alert("Register first!");
