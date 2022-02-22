@@ -53,6 +53,7 @@ function add_base_pl_team_data()
     $wpdb->insert($table_name, $data, $format);
 }
 
+
 class Passwordless_login
 {
     /**
@@ -75,14 +76,7 @@ class Passwordless_login
         add_filter('login_redirect', array($this, 'redirect_after_login'), 10, 3);
         add_action('template_redirect', array($this, 'redirect_if_applicable'));
         add_shortcode('init', 'add_base_pl_team_data');
-        // add_action( 'rest_api_init', function () {
-        //     register_rest_route( '.well-known', '/assetlinks', array(
-        //         'methods' => 'GET',
-        //         'callback' => function(){
-        //             return file_get_contents(plugin_dir_url(__FILE__) . '/assetlink.json');
-        //         },
-        //     ) );
-        // } );
+
 
 
     }

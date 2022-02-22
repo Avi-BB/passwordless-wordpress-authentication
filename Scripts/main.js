@@ -2,7 +2,7 @@ Passwordless.init(
   document.getElementById("base-url")?.value,
   document.getElementById("client-id")?.value
 );
-
+console.log({baseUrl: document.getElementById("base-url")?.value}, {clientId: document.getElementById("client-id")?.value});
 const getAppDetails = async () => {
   const logoImage = document.getElementById("appLogo");
   try {
@@ -132,7 +132,6 @@ const generateQR = async (username, type, platform = "web", method = "qr") => {
       } else {
         remoteResponse = await Passwordless.generateQR(userDetails);
         qrImg.src = remoteResponse.url;
-
         if (type == 1) {
           document.getElementById("viewQR").style.display = "block";
         } else if(type===3){
@@ -220,6 +219,8 @@ document.getElementById("addDevice")?.addEventListener("submit", async (e) => {
     generateQR(username, 1, "web");
   } else if (authMethod == "3") {
     generateQR(username, 1, "app");
+  } else if (authMethod == "4") {
+    generateQR(username, 2, "app", "push");
   }
 });
 

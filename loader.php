@@ -5,7 +5,7 @@
  * Description: Provides any team member the option to login without a password
  * Author: Passwordless Team
  * Author URI: https://passwordless4u.com
- * Version: 1.3.0
+ * Version: 1.3.1
  * Text Domain: passwordless-authentication
  * License: GPL v3 - https://www.gnu.org/licenses/gpl-3.0.en.html
  */

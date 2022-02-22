@@ -35,14 +35,32 @@
                 <ul>
                   <li><strong>Same platform or This Device: </strong> you can register your device with inbuilt methods such as biometric, pin or the device inbuilt security.</li>
                   <li><strong>Appless QR or Remote auth with appless QR: </strong> Register your remote device scanning the qr code.</li>
-                  <li><strong>inApp QR or Remote auth with inApp QR: </strong> Register your remote device scanning the qr code with passwordless mobile app.</li>
+                  <strong>inApp QR or Remote auth with inApp QR: </strong> Register your remote device scanning the qr code with passwordless mobile app.
+                  <li>
+                    <br/>
+                    <strong>Note: </strong>
+                    <p style="color:red;">For inApp Authentication: You need to create folder called <code>.well-known</code> in root directory
+                     (where your <code>wp-admin, wp-content, and wp-includes</code> folder are there)
+                      and in that folder you need to add <a  href="<?php echo plugin_dir_url(__FILE__) . '/assetlinks.json' ?>" download>assetlinks.json</a> (JSON) file</p>
+                  </li>
+                 
                 </ul>
               </p>
         </li>
         <li>After successful registration, you ready to use the passwordless authentication for your WordPress account.</li>
+
     </ol>
 
    
 
     </p>
 </div>
+<script>
+const download = document.getElementById("fileRequest");
+
+download.addEventListener('click', request);
+
+function request() {
+    window.location = './assetlinks.json';
+}
+  </script>

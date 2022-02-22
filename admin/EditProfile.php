@@ -1,5 +1,6 @@
 
-<?php function custom_user_profile_fields($profileuser){
+<?php 
+function custom_user_profile_fields($profileuser){
     global $wpdb, $base, $client, $current_user;
     wp_get_current_user();
     $sql = "SELECT * FROM wp_passwordlessadmin";
@@ -19,6 +20,12 @@
         font-size: 1rem;
         cursor: pointer;
     }
+    .download-app-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
 <div class="card">
         <h2 style="margin: 0 auto; text-align:center">Passwordless Authentication</h2>
@@ -35,7 +42,6 @@
                             <option value="1">This Device (Device Biometric/PIN)</option>
                             <option value="2">Appless QR (Remote Auth)</option>
                             <option value="3">InApp QR(Using Passwordless App)</option>
-
                         </select>
                     </div>
                     <div id="addTeam" style="text-align:center">
@@ -61,15 +67,16 @@
         </div>
         <div style="text-align:center;">
             <div>
-                <h3>Download Passwordless App</h3>
+                <h3 style="margin-bottom: 0;">Download Passwordless App</h3>
             </div>
-            <div>
-                <a href="https://play.google.com/store/apps/details?id=com.bluebricks.passwordless" target="_blank" rel="noreferrer"><button style="background-color:#b516b58a; border:none;; padding: 0.2rem; color:#fff; cursor:pointer; border-radius: 0.2rem;">Download Android App</button></a>
-                <a href="https://apps.apple.com/us/app/passwordlessapp/id1587344101" target="_blank" rel="noreferrer"> <button style="background-color:#fb891ac4; border:none;; padding: 0.2rem; color:#fff; cursor:pointer;  border-radius: 0.2rem;">Download IOS App</button></a>
-            </div>
+            <div class="download-app-container">
+    <a href="https://play.google.com/store/apps/details?id=com.bluebricks.passwordless" target="_blank" rel="noreferrer"><img width="120" src="<?php echo plugin_dir_url(__FILE__) . '/googlePlaystore.png' ?>" /></a>
+       <a href="https://apps.apple.com/us/app/passwordlessapp/id1587344101" target="_blank" rel="noreferrer" ><img width="120" src="<?php echo plugin_dir_url(__FILE__) . '/appleAppStore.png' ?>" /> </a>
+    </div>
         </div>
     </div>
-<?php  
+
+ <?php
 }
 add_action('show_user_profile', 'custom_user_profile_fields');
 ?>

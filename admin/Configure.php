@@ -16,6 +16,7 @@
 		box-shadow: 0 0 5px #ccc;
 		border-radius: 0.2rem;
 		margin-top: 1rem;
+		width: 40%;
 	}
 
 	.form-container {
@@ -23,6 +24,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: flex-end;
+		width: 100%;
 	}
 
 	.text-field-container {
@@ -53,6 +55,27 @@
 		font-size: 1rem;
 		cursor: pointer;
 	}
+@media screen and (max-width: 600px) {
+	.wrap {
+		width: 90%;
+	}
+	.wrap-cnd {
+		width: 90%;
+	}
+	.form-container{
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.text-field-container{
+		margin: 0.5rem;
+	}
+	h3{
+		text-align: center !important;
+		margin: 0 auto;
+
+	}
+}
 </style>
 
 <?php
@@ -99,7 +122,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 <div class="wrap">
-	<h3 style="margin-bottom: 1rem; font-weight:bold; text-align:justify;">Passwordless Configuration:</h3>
+	<h3 id="pwl-plugin-title" style="margin-bottom: 1rem; font-weight:bold; text-align:justify;">Passwordless Configuration:</h3>
 	<form class="form-container" method="POST" autocomplete="false">
 		<div class="text-field-container">
 			<label>Enter Base Url </label>

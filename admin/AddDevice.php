@@ -1,5 +1,17 @@
 
 
+<?php
+
+global $wpdb, $base, $client;
+$sql = "SELECT * FROM wp_passwordlessadmin";
+$results = $wpdb->get_results($sql);
+foreach ($results as $result) {
+
+    $base = $result->base_url;
+    $client = $result->client_id;
+}
+?>
+
 <?php global $current_user;
 wp_get_current_user(); ?>
 <style>
@@ -12,6 +24,12 @@ wp_get_current_user(); ?>
         font-size: 1rem;
         cursor: pointer;
         margin: 0.4rem auto;
+    }
+    .download-app-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
 </style>
 <div class="card">
@@ -58,29 +76,21 @@ wp_get_current_user(); ?>
   <div>
   <div style="text-align:center;">
         <div>
-            <h3>Download Passwordless App</h3>
+            <h3 style="margin-bottom: 0;">Download Passwordless App</h3>
         </div>
-    <div>
-        <a href="https://play.google.com/store/apps/details?id=com.bluebricks.passwordless" target="_blank" rel="noreferrer"><button style="background-color:#b516b58a; border:none;; padding: 0.2rem; color:#fff; cursor:pointer; border-radius: 0.2rem;">Download Android App</button></a>
-       <a href="https://apps.apple.com/us/app/passwordlessapp/id1587344101" target="_blank" rel="noreferrer" > <button style="background-color:#fb891ac4; border:none;; padding: 0.2rem; color:#fff; cursor:pointer;  border-radius: 0.2rem;">Download IOS App</button></a>
+    <div class="download-app-container">
+    <a href="https://play.google.com/store/apps/details?id=com.bluebricks.passwordless" target="_blank" rel="noreferrer"><img width="120" src="<?php echo plugin_dir_url(__FILE__) . '/googlePlaystore.png' ?>" /></a>
+       <a href="https://apps.apple.com/us/app/passwordlessapp/id1587344101" target="_blank" rel="noreferrer" ><img width="120" src="<?php echo plugin_dir_url(__FILE__) . '/appleAppStore.png' ?>" /> </a>
     </div>
+    
+
   </div>
 
     </div>
 </div>
+
 <div style="display:none">
     <input id="client-id" type="text" value="<?php echo esc_attr($client) ?>"></input>
     <input id="base-url" type="text" value="<?php echo esc_attr($base) ?>"></input>
     <input id="redirect-url" value="<?php echo get_site_url() ?>"></input>
 </div>
-<?php
-
-global $wpdb, $base, $client;
-$sql = "SELECT * FROM wp_passwordlessadmin";
-$results = $wpdb->get_results($sql);
-foreach ($results as $result) {
-
-    $base = $result->base_url;
-    $client = $result->client_id;
-}
-?>
