@@ -1,4 +1,3 @@
-
 <?php 
 function custom_user_profile_fields($profileuser){
     global $wpdb, $base, $client, $current_user;

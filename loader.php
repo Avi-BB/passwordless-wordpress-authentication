@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Passwordless Authentication
  * Plugin URI: http://wordpress.org/extend/plugins/passwordless-authentication/
- * Description: Provides any team member the option to login without a password
+ * Description: Provides any team member the option to login without a password into your wp-admin account.
  * Author: Passwordless Team
- * Author URI: https://passwordless4u.com
- * Version: 1.3.1
+ * Author URI: https://www.passwordless4u.com
+ * Version: 1.3.2
  * Text Domain: passwordless-authentication
  * License: GPL v3 - https://www.gnu.org/licenses/gpl-3.0.en.html
  */

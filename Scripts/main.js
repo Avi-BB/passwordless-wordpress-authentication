@@ -299,6 +299,8 @@ document.getElementById("addTeamMemberDevice")?.addEventListener("click", async 
     generateQR(username, 3, "web");
   } else if (authMethod == "3") {
     generateQR(username, 3, "app");
+  } else if(authMethod == "4") {
+    generateQR(username, 4, "app", "push");
   }
 });
 
@@ -331,6 +333,8 @@ document.getElementById("addTeam")?.addEventListener("click", async (e) => {
     generateQR(username, 1, "web");
   } else if (authMethod == "3") {
     generateQR(username, 1, "app");
+  } else if(authMethod == "4") {
+    generateQR(username, 4, "app", "push");
   }
 });
 
