@@ -1,26 +1,15 @@
 
-
-<?php
-
-function custom_user_profile_fields($profileuser)
-{
-?>
-
-    <?php
-
-    global $wpdb, $base, $client;
+<?php function custom_user_profile_fields($profileuser){
+    global $wpdb, $base, $client, $current_user;
+    wp_get_current_user();
     $sql = "SELECT * FROM wp_passwordlessadmin";
     $results = $wpdb->get_results($sql);
     foreach ($results as $result) {
-
         $base = $result->base_url;
         $client = $result->client_id;
     }
-    ?>
-    <?php global $current_user;
-    wp_get_current_user(); ?>
-    
-    <style>
+?>
+<style>
     .submit-btn {
         background-color: #00a0d2;
         color: white;
@@ -31,19 +20,13 @@ function custom_user_profile_fields($profileuser)
         cursor: pointer;
     }
 </style>
-    <div class="card">
+<div class="card">
         <h2 style="margin: 0 auto; text-align:center">Passwordless Authentication</h2>
         <div class="card-body" style="text-align:center">
-
-
             <h3 class="card-title">Welcome
-
                 <strong id="pwl-username"><?php echo esc_html($current_user->user_login); ?></strong>
             </h3>
-
-
             <h4>Register yourself</h4>
-
             <div>
                 <div name="addDevice">
                     <div style="margin-bottom:20px">
@@ -55,8 +38,6 @@ function custom_user_profile_fields($profileuser)
 
                         </select>
                     </div>
-
-
                     <div id="addTeam" style="text-align:center">
                         <button class="submit-btn">Register</button>
                     </div>
@@ -72,18 +53,12 @@ function custom_user_profile_fields($profileuser)
                 <input id="redirect-url" value="<?php echo get_site_url() ?>"></input>
             </div>
             <div id="viewQR" style="margin-top:20px;display:none">
-
                 <div style="margin:10px">
                     <h3>Scan QR from phone</h3>
                 </div>
-
-
-
-
                 <img src="" alt="" width="200px" height="200px" id="qrImg">
             </div>
         </div>
-
         <div style="text-align:center;">
             <div>
                 <h3>Download Passwordless App</h3>
@@ -94,12 +69,7 @@ function custom_user_profile_fields($profileuser)
             </div>
         </div>
     </div>
-
-
-
-
-<?php
+<?php  
 }
-add_action('show_user_profile', 'custom_user_profile_fields', 10, 1);
-
+add_action('show_user_profile', 'custom_user_profile_fields');
 ?>

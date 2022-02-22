@@ -11,6 +11,7 @@ wp_get_current_user(); ?>
         padding: 0.3rem 0.7rem;
         font-size: 1rem;
         cursor: pointer;
+        margin: 0.4rem auto;
     }
 </style>
 <div class="card">
@@ -51,10 +52,6 @@ wp_get_current_user(); ?>
             <div style="margin:10px">
                 <h3>Scan QR from phone</h3>
             </div>
-
-
-
-
             <img src="" alt="" width="200px" height="200px" id="qrImg">
         </div>
     </div>
@@ -71,7 +68,11 @@ wp_get_current_user(); ?>
 
     </div>
 </div>
-
+<div style="display:none">
+    <input id="client-id" type="text" value="<?php echo esc_attr($client) ?>"></input>
+    <input id="base-url" type="text" value="<?php echo esc_attr($base) ?>"></input>
+    <input id="redirect-url" value="<?php echo get_site_url() ?>"></input>
+</div>
 <?php
 
 global $wpdb, $base, $client;
@@ -83,8 +84,3 @@ foreach ($results as $result) {
     $client = $result->client_id;
 }
 ?>
-<div style="display:none">
-    <input id="client-id" type="text" value="<?php echo esc_attr($client) ?>"></input>
-    <input id="base-url" type="text" value="<?php echo esc_attr($base) ?>"></input>
-    <input id="redirect-url" value="<?php echo get_site_url() ?>"></input>
-</div>

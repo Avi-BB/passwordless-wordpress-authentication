@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
@@ -25,3 +21,4 @@ function passwordless_admin_auth_login_user($username)
         exit();
     }
 }
+?>

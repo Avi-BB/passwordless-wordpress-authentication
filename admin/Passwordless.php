@@ -39,7 +39,7 @@
                 </ul>
               </p>
         </li>
-        <li>After successful registration, you ready to use the passwordless authentication for you WordPress account.</li>
+        <li>After successful registration, you ready to use the passwordless authentication for your WordPress account.</li>
     </ol>
 
    

@@ -1,5 +1,4 @@
 <?php
-
 function passwordless_enqueue_css_js()
 {
     wp_enqueue_script('pwl-sdk', plugin_dir_url(__FILE__) . 'Scripts/passwordless-bb.js', null, null, false);
@@ -9,7 +8,6 @@ function passwordless_enqueue_css_js()
     wp_enqueue_script('bootstrapjs', plugin_dir_url(__FILE__) . 'Scripts/bootstrap.min.js');
     wp_enqueue_script('mainjs', plugin_dir_url(__FILE__) . 'Scripts/main.js', null, null, true);
     wp_enqueue_script('assetlinks', plugin_dir_url(__FILE__) . 'Scripts/assetlinks.json', null, null, false);
-
 }
 
 function passwordless_admin_css_js()
@@ -18,13 +16,9 @@ function passwordless_admin_css_js()
     wp_enqueue_script('mainjs', plugin_dir_url(__FILE__) . 'Scripts/main.js', null, null, true);
     wp_enqueue_script('detect', plugin_dir_url(__FILE__) . 'Scripts/detect.js', null, null, false);
     wp_enqueue_script('assetlinks', plugin_dir_url(__FILE__) . 'Scripts/assetlinks.json', null, null, false);
-
 }
 add_action('wp_enqueue_scripts', 'passwordless_enqueue_css_js');
 add_action('admin_enqueue_scripts', 'passwordless_admin_css_js');
-
-
-
 function custom_permalinks()
 {
     global $wp_rewrite;
@@ -59,13 +53,6 @@ function add_base_pl_team_data()
     $wpdb->insert($table_name, $data, $format);
 }
 
-
-
-
-
-
-
-
 class Passwordless_login
 {
     /**
@@ -97,13 +84,8 @@ class Passwordless_login
         //     ) );
         // } );
 
-   
+
     }
-
-// Assetlink generate
-
-
-// end
 
 
     /**
@@ -116,7 +98,7 @@ class Passwordless_login
 
     public static function plugin_activated()
     {
-      
+
         // Information needed for creating the plugin's pages
         $page_definitions = array(
             'member-login' => array(
@@ -523,6 +505,4 @@ class Passwordless_login
         }
     }
 }
-
-
 $passwordless_login_pages_plugin = new Passwordless_login();

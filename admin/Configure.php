@@ -66,15 +66,11 @@ foreach ($results as $result) {
 	$client = $result->client_id;
 }
 ?>
-
-
 <?php
 if (isset($_POST['submit'])) {
 
 	// Set table name
 	$table = $wpdb->prefix . 'passwordlessadmin';
-
-
 	$charset_collate = $wpdb->get_charset_collate();
 	$query1 = $wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->esc_like($table));
 	if ($wpdb->get_var($query1) !== $table) {
@@ -101,11 +97,7 @@ if (isset($_POST['submit'])) {
 		}
 	}
 }
-
-
 ?>
-
-
 <div class="wrap">
 	<h3 style="margin-bottom: 1rem; font-weight:bold; text-align:justify;">Passwordless Configuration:</h3>
 	<form class="form-container" method="POST" autocomplete="false">
@@ -132,18 +124,3 @@ if (isset($_POST['submit'])) {
 	<p>Detail Integration of Passwordless's WordPress account authentication plugin</p>
 	<p>Visit: <a href="https://docs.passwordless4u.com/getting-started/wordpress" alt="passwordless" target="_blank" noreferrer>docs.passwordless4u.com</a></p>
 </div>
-
-
-<!-- <div style="margin-top: 1rem;">
-<h2>Intgration Guide: </h2>
-	<iframe width="500" height="345" src="https://www.youtube.com/watch?v=QXbrdVjWaME">
-	</iframe>
-
-</div> -->
-<!-- <div style="width: 30%">
-<strong>Please change the slug of Passwordless Sign In Page to member-login</strong>
-<p><strong>Passwordless Sign In page</strong> is auto generated when plugin is activated.
-Please! change the slug of Passwordless Sign In page to <strong>member-login</strong>
-</p>
-<p>Ex: if your site is https://example.com then the page path is https://example.com/member-login</p>
-<img src="./info.png" width="150px" height="auto" alt="info"/> -->

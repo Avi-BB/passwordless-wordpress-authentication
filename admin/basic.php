@@ -61,3 +61,4 @@ add_action('admin_menu', 'passwordless_admin_auth_menu');
 // add_action( 'edit_user_profile', 'edit_profile' );
 // This will show below the color scheme and above username field
      
+?>
