@@ -47,8 +47,8 @@ function custom_user_profile_fields($profileuser){
                         <button class="submit-btn">Register</button>
                     </div>
                     <br />
-                    <div id="addTeamMemberDevice" style="text-align:center">
-                        <button class="submit-btn">Add Device</button>
+                    <div  style="text-align:center">
+                        <button id="addTeamMemberDevice" class="submit-btn">Add Device</button>
                     </div>
                 </div>
             </div>

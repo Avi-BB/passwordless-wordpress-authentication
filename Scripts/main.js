@@ -251,6 +251,7 @@ document
         // console.log(response);
         if (response.verified) {
           alert("Success");
+          window.close();
         }
       }
     } catch (error) {
@@ -271,13 +272,13 @@ const decline = async (id) => {
 
 document.getElementById("addTeamMemberDevice")?.addEventListener("click", async (e) => {
 
-
+  e.preventDefault();
   // console.log({ clientId: document.getElementById("client-id").value });
 
   const username = document.getElementById("pwl-username").innerText;
   const authMethod = document.getElementById("authMethod").value;
   console.log({ username, authMethod });
-// console.log("add team member device listner");
+//console.log("add team member device listener");
   if (authMethod == "1") {
     try {
       // console.log("Passwordless same Platform method called");
@@ -299,8 +300,6 @@ document.getElementById("addTeamMemberDevice")?.addEventListener("click", async 
     generateQR(username, 3, "web");
   } else if (authMethod == "3") {
     generateQR(username, 3, "app");
-  } else if(authMethod == "4") {
-    generateQR(username, 4, "app", "push");
   }
 });
 
@@ -333,8 +332,6 @@ document.getElementById("addTeam")?.addEventListener("click", async (e) => {
     generateQR(username, 1, "web");
   } else if (authMethod == "3") {
     generateQR(username, 1, "app");
-  } else if(authMethod == "4") {
-    generateQR(username, 4, "app", "push");
   }
 });
 
