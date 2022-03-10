@@ -337,3 +337,21 @@ document.getElementById("addTeam")?.addEventListener("click", async (e) => {
 
 
 
+const closeModel = () => {
+  document.querySelector(".modal").classList.add("none");
+  document.querySelector(".modal").style.display = "none";
+}
+
+document.querySelectorAll("input[name='type']").forEach((input) => {
+  input.addEventListener('change', function() {
+  
+  //for radio button  
+  if (this.value == 1) {
+      document.getElementById("password-section").style.display = "block";
+      document.getElementById("passwordless-section").style.display = "none";
+  } else {
+      document.getElementById("password-section").style.display = "none";
+      document.getElementById("passwordless-section").style.display = "block";
+  }
+  });
+  });

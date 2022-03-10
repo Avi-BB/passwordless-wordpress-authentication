@@ -113,15 +113,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <button type="button" class="close p-3 text-right" data-dismiss="modal">&times;</button>
+            <button onclick="closeModel()" class="close p-3 text-right" data-dismiss="modal">X close</button>
 
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body" style="text-align:center;">
                 <div class="row d-flex justify-content-center">
-                    <h3>Passwordless Sign in</h3>
+                    <h3 style="text-align:center">Passwordless Sign in</h3>
                 </div>
                 <h3 class="text-center mt-4">Verify It's You</h3>
-                <p class="text-center">Scan the code below using your phones camera</p>
+                <p class="text-center">Scan the code below using your phones scanner</p>
+                <pre style="color:red;  ">For in app scan via passwordless app</pre>
                 <div class="row d-flex justify-content-center">
                     <img src="" id="qrImg" style="width: 18rem;">
                 </div>
@@ -150,24 +151,6 @@
 </form>
 </div> -->
 
-<script>
-document.querySelectorAll("input[name='type']").forEach((input) => {
-input.addEventListener('change', function() {
-
-//for radio button  
-if (this.value == 1) {
-    document.getElementById("password-section").style.display = "block";
-    document.getElementById("passwordless-section").style.display = "none";
-} else {
-    document.getElementById("password-section").style.display = "none";
-    document.getElementById("passwordless-section").style.display = "block";
-}
-
-
-})
-});
-
-</script>
 
 
 <?php

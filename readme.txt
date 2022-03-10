@@ -3,7 +3,7 @@ Contributors: ![Passwordless Team](https://www.passwordless4u.com)
 Tags:  oauth, sso, authentication, encryption, ssl, secure, security, strong, harden, sign up, sign in, login, log in, sign out, lock, unlock, alert,  wp-login, 2 step authentication, two-factor , two step, two factor, 2-Factor, 2fa, two, tfa, mfa, qr, multi-factor, multifactorial
 Requires at least: 4.7.0
 Tested up to: 5.9
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -51,14 +51,14 @@ Once you install the plugin, click on ‘Configure’. Here, you have two setup 
 3. First need to create account on https://www.passwordless4u.com/
 4. Go to dashboard, click on add application and create on Web/WordPress app and get the details such as clientId and baseUrl
 5. Come back to wordpress developer setting you'll see the Passwordless menu
-6. Go to passwordless configure and click on create button **only once**.
-7. fill the details which is base url and client Id.
-8. save the settings
-9. Two pages are generated one is Passwordless Sign in and other is authentication token
-10. If passwordless login page slug is not member-login then change to that it must have member-login slug. ex if site name is https://www.exmaple.com then the login in page url is https://www.example.com/member-login
-11. come back to Passwordless menu in wordpress you'll see the add device option
-12. click on add device and add your device if user is register successfully then alert will display "Registration successful".
-If user is already register then alert will display "User Already Exist !!".
+6. fill the details such as base url and client Id.
+7. save the settings
+8. Two pages are generated one is Passwordless Sign in and other is authentication token
+9.  Passwordless menu, you'll see the add device option, click on it.
+10. Choose authentication method, there are 3 authentication method 1. Same Device 2. Appless QR and 3. InApp QR 
+choose one of them and hit on register button.
+11. Once you register you can add more devices to your account. Choose the authentication methods and hit on add device button.
+12. Done.
 
 == Screenshots ==
 
@@ -80,6 +80,9 @@ Please email us at [help@passwordless4u.com](help@passwordless4u.com)
 For any other queries or if you need additional support, please email us at [help@passwordless4u.com](help@passwordless4u.com) 
 = Error: ClientId and BaseUrl is not added =
 This error means that the plugin is unable to verify the validity of the login or register claim. This can often be resulted from a bad baseURL and api key combination. Please double check your Base URL and clientId API Key parameters in the plugin settings against your credentials on the Passwordless's dashboard.
+
+= 1.3.3 =
+issue resolved
 
 = 1.3.2 =
 issue resolved

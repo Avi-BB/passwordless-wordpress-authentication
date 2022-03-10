@@ -119,7 +119,9 @@ const App = (() => {
         }),
       });
       const responseJSON = await response.json();
+      if (responseJSON.errorCode === -1) throw new Error(responseJSON.errorMessage);
       responseJSON.transactionId = transactionId;
+
       return responseJSON;
     } catch (error) {
       throw new Error(error);

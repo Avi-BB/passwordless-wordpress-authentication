@@ -76,13 +76,20 @@ wp_get_current_user(); ?>
   <div>
   <div style="text-align:center;">
         <div>
-            <h3 style="margin-bottom: 0;">Download Passwordless App</h3>
+            <h3 style="margin-bottom: 0;">Download Passwordless App For InApp QR Auth</h3>
         </div>
     <div class="download-app-container">
     <a href="https://play.google.com/store/apps/details?id=com.bluebricks.passwordless" target="_blank" rel="noreferrer"><img width="120" src="<?php echo plugin_dir_url(__FILE__) . '/googlePlaystore.png' ?>" /></a>
        <a href="https://apps.apple.com/us/app/passwordlessapp/id1587344101" target="_blank" rel="noreferrer" ><img width="120" src="<?php echo plugin_dir_url(__FILE__) . '/appleAppStore.png' ?>" /> </a>
     </div>
-    
+    <div style="text-align: justify">
+    <strong style="font-size: 1rem">Note: </strong>
+                    <p style="color:red;">For inApp Authentication: You need to create folder called <code>.well-known</code> in root directory
+                     (where your <code>wp-admin, wp-content, and wp-includes</code> folders are)
+                      and in that folder you need to add <a  href="<?php echo plugin_dir_url(__FILE__) . '/assetlinks.json' ?>" download>assetlinks.json</a> (JSON) file as it is.
+                    </p>
+</div>
+                 
 
   </div>
 
