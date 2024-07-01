@@ -3,7 +3,7 @@
     <p >
     <ol style="font-size:0.9rem; color: #000; width: 80%; text-align:justify;">
         <li>Install the passwordless authentication plugin</li>
-        <li> First need to create account on <a href="https://home.passwordless4u.com/" target="_blank" noreferrer>https://home.passwordless4u.com/</a></li>
+        <li> First need to create account on <a href="https://app.passwordless4u.com/" target="_blank" noreferrer>https://app.passwordless4u.com/</a></li>
         <li>
 
              Go to Passwordless's dashboard, click on add application and create on Web/WordPress app and get the details such as clientId and baseUrl

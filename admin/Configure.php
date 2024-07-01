@@ -139,7 +139,7 @@ if (isset($_POST['submit'])) {
 
 <div class="wrap-cnd">
 	<h3>Get your Passwordless credentials</h3>
-	<p>Visit: <a href="https://home.passwordless4u.com" alt="passwordless" target="_blank" noreferrer>home.passwordless4u.com</a></p>
+	<p>Visit: <a href="https://app.passwordless4u.com" alt="passwordless" target="_blank" noreferrer>app.passwordless4u.com</a></p>
 </div>
 
 <div class="wrap-cnd">

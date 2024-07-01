@@ -5,7 +5,7 @@
  * Description: Provides any team member the option to login without a password into your wp-admin account.
  * Author: Passwordless Team
  * Author URI: https://www.passwordless4u.com
- * Version: 1.3.3
+ * Version: 1.3.5
  * Text Domain: passwordless-authentication
  * License: GPL v3 - https://www.gnu.org/licenses/gpl-3.0.en.html
  */

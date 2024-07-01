@@ -54,7 +54,7 @@ As this is a wordpress plugin this project requires wordpress to run.
 
    ![Settings](img/settings.png)
 
-3. Visit [Passwordless Dashboard](https://home.passwordless4u.com/) click on the "Add Application" button to create application, select Web/Wordpress app and fill the form.
+3. Visit [Passwordless Dashboard](https://app.passwordless4u.com/) click on the "Add Application" button to create application, select Web/Wordpress app and fill the form.
 you'll get the following view when you click on "Save and Next".
 
 Copy from the Passwordless dashboard
